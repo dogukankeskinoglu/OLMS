@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microservices.olms.DataAccess.IStudentCourseDal;
+import com.microservices.olms.Entities.Student;
 import com.microservices.olms.Entities.StudentCourse;
 
 @Service
@@ -25,11 +26,11 @@ public class StudentCourseManager implements IStudentCourseService{
 	public List<StudentCourse> getAll() {
 		return studentCourseDal.getAll();
 	}
+	
 
 	@Override
 	@Transactional
 	public void add(StudentCourse studentCourse) {
-		
 		studentCourseDal.add(studentCourse);
 	}
 

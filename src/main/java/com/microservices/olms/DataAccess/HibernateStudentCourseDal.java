@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.microservices.olms.Entities.Course;
 import com.microservices.olms.Entities.StudentCourse;
 
 @Repository
@@ -65,5 +66,6 @@ public class HibernateStudentCourseDal implements IStudentCourseDal{
 		StudentCourse studentCourse = session.get(StudentCourse.class, id);
 		return studentCourse;
 	}
+
 
 }

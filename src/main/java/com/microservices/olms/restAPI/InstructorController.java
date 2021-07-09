@@ -37,7 +37,7 @@ public class InstructorController {
 	}
 	
 	@PostMapping("/updateinstructor")
-	public void update(@RequestBody Instructor instructor) {
+	public void update(@RequestBody Instructor  instructor) {
 		instructorService.update(instructor);
 	}
 	

@@ -1,5 +1,6 @@
 package com.microservices.olms.restAPI;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.olms.Business.IStudentCourseService;
+import com.microservices.olms.Entities.Student;
 import com.microservices.olms.Entities.StudentCourse;
 
 @RestController
@@ -25,6 +27,18 @@ public class StudentCourseController {
 	@GetMapping("/studentcourses")
 	public List<StudentCourse> get(){
 		return studentCourseService.getAll();
+	}
+	
+	@GetMapping("/coursestudents/{id}")
+	public ArrayList<Student> getByCourseId(@PathVariable int id){
+		List<StudentCourse> coursestudents= studentCourseService.getAll();
+		ArrayList<Student> students = new ArrayList<Student>();
+		for(int i=0;i<coursestudents.size();i++) {
+			if(coursestudents.get(i).getCourse().getId()==id) {
+				students.add(coursestudents.get(i).getStudent());
+			}
+		}
+		return students;
 	}
 	
 	@PostMapping("/addstudentcourse")
